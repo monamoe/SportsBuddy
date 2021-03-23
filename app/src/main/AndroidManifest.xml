@@ -25,7 +25,8 @@
         android:theme="@style/Theme.SportsBuddyApp"
         android:usesCleartextTraffic="true">
         <activity android:name=".eventslist"></activity>
-        <activity android:name=".views.EditProfilePage"></activity>
+        <activity android:name=".views.EditProfilePage" />
+
 
 
         <meta-data
@@ -45,9 +46,7 @@
         </activity>
         <activity
             android:name=".views.map"
-            android:label="@string/title_activity_maps">
-
-        </activity>
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>
