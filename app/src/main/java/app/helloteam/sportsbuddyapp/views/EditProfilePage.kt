@@ -17,6 +17,7 @@ import app.helloteam.sportsbuddyapp.models.User
 import app.helloteam.sportsbuddyapp.databinding.ActivityEditProfilePageBinding
 import app.helloteam.sportsbuddyapp.parse.ParseCode
 import com.parse.ParseUser
+import java.io.File
 
 class EditProfilePage : AppCompatActivity() {
 
@@ -25,6 +26,8 @@ class EditProfilePage : AppCompatActivity() {
     lateinit var button: Button
     private val pickImage = 100
     private var imageUri: Uri? = null
+
+
 
 
     private lateinit var binding: ActivityEditProfilePageBinding
@@ -36,6 +39,9 @@ class EditProfilePage : AppCompatActivity() {
 
         val btnLoadPic =findViewById<Button>(R.id.btnLoadPicture)
         val profilepic = findViewById<ImageView>(R.id.profilepic)
+        val fileName = "profilePicFile"
+        
+
 
 
 
