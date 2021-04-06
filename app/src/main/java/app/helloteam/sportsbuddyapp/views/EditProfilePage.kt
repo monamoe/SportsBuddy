@@ -20,7 +20,9 @@ import app.helloteam.sportsbuddyapp.databinding.ActivityEditProfilePageBinding
 import app.helloteam.sportsbuddyapp.models.User
 import app.helloteam.sportsbuddyapp.parse.ParseCode
 import com.parse.ParseUser
-import java.io.File
+import java.io.*
+
+
 
 class EditProfilePage : AppCompatActivity() {
 
@@ -39,6 +41,14 @@ class EditProfilePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityEditProfilePageBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
+
+        if(ImageStorage.checkifImageExists(this, "${ParseUser.getCurrentUser().username}ProfilePic")){
+            val pfp = ImageStorage.getImage(this, "${ParseUser.getCurrentUser().username}ProfilePic")
+                var pfp2 = Uri.fromFile(pfp)
+            binding.profilepic.setImageURI(pfp2)
+
+
+        }
 
         val btnLoadPic =findViewById<Button>(R.id.btnLoadPicture)
         val profilepic = findViewById<ImageView>(R.id.profilepic)
@@ -116,7 +126,11 @@ class EditProfilePage : AppCompatActivity() {
             imageUri = data?.data
             binding.profilepic.setImageURI(imageUri)
             val bit = getBitMap(imageUri)
-            ImageStorage.saveInternalStorage(this, bit, "${ParseUser.getCurrentUser().username}ProfilePic")
+            ImageStorage.saveInternalStorage(
+                this,
+                bit,
+                "${ParseUser.getCurrentUser().username}ProfilePic"
+            )
         }
     }
 
@@ -153,5 +167,19 @@ class EditProfilePage : AppCompatActivity() {
         val k = Integer.highestOneBit(Math.floor(ratio).toInt())
         return if (k == 0) 1 else k
     }
+
+   /* private fun loadImageFromStorage(path: String) {
+        try {
+            val f = File(path, "profile.jpg")
+            val b = BitmapFactory.decodeStream(FileInputStream(f))
+            val img = findViewById<View>(R.id.imgPicker) as ImageView
+            img.setImageBitmap(b)
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+        }
+    } */
+
+
+
 
 }
