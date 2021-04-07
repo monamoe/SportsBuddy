@@ -43,7 +43,7 @@ class EditProfilePage : AppCompatActivity() {
         setContentView(binding.root)
 
         if(ImageStorage.checkifImageExists(this, "${ParseUser.getCurrentUser().username}ProfilePic")){
-            val pfp = ImageStorage.getImage(this, "${ParseUser.getCurrentUser().username}ProfilePic")
+            val pfp = ImageStorage.getImage(this, "${ParseUser.getCurrentUser().username}ProfilePic.jpg")
                 var pfp2 = Uri.fromFile(pfp)
             binding.profilepic.setImageURI(pfp2)
 
